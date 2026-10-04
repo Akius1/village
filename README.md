@@ -1,18 +1,24 @@
 # Village
 
-A support planner built around transferring the mental load: a messy note becomes complete handovers with proposed finish lines and check-back boundaries. A supporter preview filters available handovers by the parent's time estimates and location. Already agreed and completed work is excluded from that preview. All personal app state is device-local; the supporter view is on the same device, not a live shared portal. No requests are automatically sent.
+By Andrew Urom (Akius1).
 
-## Run
+Write what you need, create a request immediately, review its details, and copy a message to someone you trust. AI drafting is a separate option for splitting a longer note and proposing finish lines. AI suggestions require human review.
 
-Serve `dist/` with any static HTTP server. On-device AI needs WebGPU (usually current desktop Chrome or Edge) and an initial model download. The app uses WebLLM 0.2.85 and Qwen2.5-1.5B-Instruct-q4f16_1-MLC, fetched from external providers. Personal notes are processed in the browser. Offline availability is not guaranteed: the app and runtime still need to load.
+## Try it
 
-The sample plan is explicitly labelled and does not call AI. AI output must be reviewed. This app is not a medical service; it provides no recovery, diet or exercise prescription.
+https://village-share-the-load.oseremenurom.chatgpt.site
 
-## Verification and limits
+Serve `dist/` with a static HTTP server. AI needs WebGPU and an initial model download of about 0.8 GB. First use can take several minutes. The runtime is WebLLM 0.2.85 with Qwen2.5-1.5B-Instruct-q4f16_1-MLC. A Web Worker keeps AI computation off the interface thread. The UI shows progress, elapsed time, cancellation, and bounded failure states. Creating a request directly does not need the model.
 
-Manual checks: add, edit, remove, select, copy and mark requests done; reload to confirm browser persistence; clear stored data; empty-note validation; unavailable-WebGPU error; failed or malformed model response. AI drafts depend on device compatibility and model quality. The small model may misinterpret a note. No multi-user coordination, delivery receipts or cross-device sync is implied.
+## Privacy and limits
 
-## Challenge submission
+Notes and requests are saved in this browser. AI inference is local; external providers receive runtime/model download requests. Offline availability is not guaranteed. No accounts, cross-device sync, or automatic sending. The helper view is a same-device preview. The app does not prescribe medical, recovery, diet, or exercise advice.
 
-Before entering: run a real model generation on a supported device, ask the intended recipient to try the app, record honest feedback, prepare a demo and DEV post using the official template. Ask permission before naming her or sharing her personal story. Do not claim unperformed testing or feedback.
+## Open components
 
+- WebLLM: https://github.com/mlc-ai/web-llm
+- Qwen: https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct
+
+## Validation
+
+See the local verification report for performed developer checks. Recipient feedback is separate and must not be claimed before it happens.
